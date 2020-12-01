@@ -1,7 +1,8 @@
 import cv2
+import numpy as np
 
 def open_image():
-    image = cv2.imread('helloWorld.png')
+    image = cv2.imread('amongus.jpeg')
     return image
 
 
@@ -13,11 +14,15 @@ def blur(image):
     ksize = (10, 10)
     blur = cv2.blur(image, ksize)
     return blur
+def dilate(image):
+    kernel = np.ones((5, 5), np.uint8)
+    dilation = cv2.dilate(image,kernel ,20)
+    return dilation
 def save(imageToSave):
     cv2.imwrite('imagesvg/image.jpeg', imageToSave)
 
 
 
 image = open_image()
-blur = blur(image)
-save(blur)
+dilatation = dilate(image)
+save(dilatation)
