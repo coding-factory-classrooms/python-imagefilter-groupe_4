@@ -4,7 +4,7 @@ import sys
 
 def open_image():
 
-        
+
         image = cv2.imread('amongus.jpeg')
         print("l'image est ouverte")
         return image
@@ -40,4 +40,6 @@ def save(imageToSave):
     print("l'image est sauvegarder")
 
 
-
+image = open_image()
+image = nb()
+save(image)
