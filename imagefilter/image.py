@@ -41,5 +41,5 @@ def save(imageToSave):
 
 
 image = open_image()
-image = nb()
+image = nb(image)
 save(image)
