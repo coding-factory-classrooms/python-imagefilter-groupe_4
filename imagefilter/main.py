@@ -6,38 +6,40 @@ import os
 args = sys.argv
 image = ""
 
-if args[1] == "open":
+def commande():
+    sep = args[1].split("|")
+    taille = len(sep)
+    print(taille)
     image = i.open_image()
-    if args[2] == "nb":
-        image = i.nb(image)
-        i.save(image)
-    elif args[2] == "blur":
-        image = i.blur(image)
-        i.save(image)
-    elif args[2] == "dilate":
-        image = i.dilate(image)
-        i.save(image)
 
-if args[1] == "-h":
-    print("usage: imagefilter")
-    print("--h,----help")
-    print("-i,--input-dir <directory>")
-    print("-o,--output-dir <directory>")
+    for c in range(taille):
+        argument = sep[c]
 
-if args[1] == "--filter":
-    option = args[2]
-    option = option.split("|")
+        if argument == "nb":
+                image = i.nb(image)
+
+        elif argument == "blur":
+
+                image = i.blur(image)
+
+        elif argument == "dilate":
+
+                image = i.dilate(image)
 
 
-def createFolder(directory):
-    try:
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-    except OSError:
-        print('Error: Creating directory. ' + directory)
+        if argument == "-h":
+            print("usage: imagefilter")
+            print("--h,----help")
+            print("-i,--input-dir <directory>")
+            print("-o,--output-dir <directory>")
+            print("nb,--convert all the image of the input directory to black and white")
+            print("blur,--convert all the image of the input directory to blur")
+            print("dilate,--convert all the image of the input directory to dilate")
+
+    i.save(image)
+commande()
 
 
-# Example
-createFolder('./output/')
+
 
 
