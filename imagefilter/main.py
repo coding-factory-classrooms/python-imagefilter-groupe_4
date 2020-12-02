@@ -2,6 +2,7 @@ import cv2
 import sys
 import image as i
 import os
+import logger
 
 args = sys.argv
 image = ""
@@ -23,6 +24,7 @@ if args[1] == "--filter":
 
 
 def createFolder(directory):
+
     try:
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -32,4 +34,5 @@ def createFolder(directory):
 
 # Example
 createFolder('./output/')
+
 
