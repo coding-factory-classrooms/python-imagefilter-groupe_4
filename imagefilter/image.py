@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import sys
-
+test = 1
 def open_image():
 
 
