@@ -14,6 +14,18 @@ def commande():
     :return: nothing
     """
     nbargs = 1
+    taille = 0
+    if args[1] == "-h":
+        print("usage: imagefilter")
+        print("--h,----help")
+        print("-i,--input-dir <directory>")
+        print("-o,--output-dir <directory>")
+        print("--filters \"filters1|filters2|filters3\",--add filters on images")
+        print("--------------filters:-----------")
+        print("greyscale,--convert all the image of the input directory to black and white")
+        print("blur,--convert all the image of the input directory to blur")
+        print("dilate,--convert all the image of the input directory to dilate")
+        sys.exit()
     if args[1] == "-i" or args[1] =="-o":
         if args[1] == "-i":
 
@@ -27,7 +39,7 @@ def commande():
             nbargs = 5
     if args[nbargs] == "--filters":
         sep = args[nbargs+1].split("|")
-    taille = len(sep)
+        taille = len(sep)
 
     i.dico = i.open_image()
 
@@ -38,7 +50,7 @@ def commande():
 
             arg = argument.split(":")
             print(arg)
-        if argument == "nb":
+        if argument == "greyscale":
 
             i.dico = i.nb()
 
@@ -50,14 +62,7 @@ def commande():
 
             i.dico = i.dilate(int(arg[1]))
 
-        if argument == "-h":
-            print("usage: imagefilter")
-            print("--h,----help")
-            print("-i,--input-dir <directory>")
-            print("-o,--output-dir <directory>")
-            print("nb,--convert all the image of the input directory to black and white")
-            print("blur,--convert all the image of the input directory to blur")
-            print("dilate,--convert all the image of the input directory to dilate")
+
 
     i.save()
 

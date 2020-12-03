@@ -32,7 +32,7 @@ def nb():
     add a grayscale to all the image
     :return: all the image with a grayscale filter
     """
-    print("ici")
+
     gray = {}
 
     for n in dico:
@@ -109,6 +109,34 @@ def dilate(height):
         print("l'image est dilate")
     isImage = True
     return dilation
+
+def FilterZeTeam():
+    global isImage
+    font = cv2.COLOR_BGR2GRAY
+    bottomLeftCornerOfText = (10, 500)
+    fontScale = 1
+    fontColor = (255, 255, 255)
+    lineType = 2
+    zeTeam = {}
+    for n in dico:
+        if isImage == False:
+
+            imgPath = path + "/" + dico[n]
+            image = cv2.imread(imgPath)
+
+        else:
+            image = dico[n]
+        print("ajout de la team")
+        zeTeam[n] = cv2.putText(image,'-produit par: Alexandre, Angel, Alban',
+    bottomLeftCornerOfText,
+    font,
+    fontScale,
+    fontColor,
+    lineType)
+    isImage = True
+
+    return zeTeam
+
 def save():
     """
     save all the image in a folders
@@ -117,7 +145,7 @@ def save():
 
     createFolder(folder)
     for n in dico:
-        print(dico[n])
+
         cv2.imwrite(folder+'image'+str(n)+'.jpeg', dico[n])
         print("l'image est sauvegarder")
 def createFolder(directory):
@@ -130,5 +158,6 @@ def createFolder(directory):
     except OSError:
         print('Error: Creating directory. ' + directory)
 
-
-
+dico = open_image()
+dico = FilterZeTeam()
+save()
