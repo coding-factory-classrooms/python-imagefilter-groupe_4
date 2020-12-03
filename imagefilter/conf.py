@@ -5,8 +5,6 @@ import logger
 config = configparser.ConfigParser()
 config.read('imagefilter.ini')
 
-print('general')
-
 
 def load_conf():
     parser = argparse.ArgumentParser()
@@ -54,11 +52,13 @@ def load_conf():
 
 write_config = configparser.ConfigParser()
 
-cfgfile = open("imagefilter.ini", 'w')
-write_config.write(cfgfile)
-cfgfile.close()
+conf_file = open("imagefilter.ini", 'w')
+write_config.write(conf_file)
+conf_file.close()
 
 read_config = configparser.ConfigParser()
 read_config.read("imagefilter.ini")
 
 logger.dump_log()
+
+
