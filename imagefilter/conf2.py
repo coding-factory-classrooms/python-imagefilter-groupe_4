@@ -46,7 +46,8 @@ def readfile():
                     sep = c.split(":")
 
                     i.dico = i.dilate(int(sep[1]))
-
+                if c.find("FilterZeTeam") >= 0:
+                    i.dico = i.FilterZeTeam()
 
         i.save()
 

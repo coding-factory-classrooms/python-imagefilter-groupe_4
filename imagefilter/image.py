@@ -147,11 +147,11 @@ def FilterZeTeam():
             fontScale,
             fontColor,
             lineType)
-            isImage = True
-            return zeTeam
+
         except:
             print("error during the filterZeTeam")
-
+    isImage = True
+    return zeTeam
 
 def save():
     """
