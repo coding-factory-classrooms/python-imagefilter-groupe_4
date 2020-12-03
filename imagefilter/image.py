@@ -16,7 +16,7 @@ def open_image():
     dirs = os.listdir(path)
     nbImg = 0
     for file in dirs:
-        if file.find(".png") >= 0 or file.find(".jpg")>= 0:
+        if file.find(".png") >= 0 or file.find(".jpg")>= 0 or file.find(".jpeg"):
             dico[nbImg] = file
             nbImg = nbImg + 1
 
@@ -46,7 +46,10 @@ def nb():
         print("l'image est noir est blanc")
     isImage = True
     return gray
-def blur():
+def blur(height):
+    print(height)
+    ksize = (height,height)
+
     try:
         blur = {}
 
@@ -60,16 +63,16 @@ def blur():
 
                 image = dico[n]
 
-            ksize = (10, 10)
+
 
             blur[n] = cv2.blur(image, ksize)
             print("l'image est floue")
         isImage = True
         return blur
-    except:
+    except ValueError:
         print("l'image n'est pas bonne ou la valeur du flou est negative")
         sys.exit()
-def dilate():
+def dilate(height):
     global isImage
     dilation = {}
     for n in dico:
@@ -84,7 +87,7 @@ def dilate():
 
 
         kernel = np.ones((5, 5), np.uint8)
-        dilation[n] = cv2.dilate(image, kernel, 20)
+        dilation[n] = cv2.dilate(image, kernel, height)
         print("l'image est dilate")
     isImage = True
     return dilation

@@ -21,8 +21,8 @@ def commande():
         if args[2] != None and args[3] == "-o":
             i.folder = args[4]
             nbargs = 5
-
-    sep = args[nbargs].split("|")
+    if args[nbargs] == "--filters":
+        sep = args[nbargs+1].split("|")
     taille = len(sep)
 
     i.dico = i.open_image()
@@ -30,16 +30,21 @@ def commande():
     for c in range(taille):
         argument = sep[c]
 
+        if argument.find(":") >= 0:
+
+            arg = argument.split(":")
+            print(arg)
         if argument == "nb":
+
             i.dico = i.nb()
 
-        elif argument == "blur":
+        elif arg[0] == "blur":
 
-            i.dico = i.blur()
+            i.dico = i.blur(int(arg[1]))
 
-        elif argument == "dilate":
+        elif arg[0] == "dilate":
 
-            i.dico = i.dilate()
+            i.dico = i.dilate(int(arg[1]))
 
         if argument == "-h":
             print("usage: imagefilter")
