@@ -1,13 +1,9 @@
 import argparse
 import configparser
+import logger
 
 config = configparser.ConfigParser()
 config.read('imagefilter.ini')
-
-input_dir = config['imagefilter/imagesvg']
-output_dir = config['imagefilter/output']
-log_file = config['imagefilter.log']
-filters = config['blur:3|grayscale']
 
 print('general')
 
@@ -64,3 +60,5 @@ cfgfile.close()
 
 read_config = configparser.ConfigParser()
 read_config.read("imagefilter.ini")
+
+logger.dump_log()

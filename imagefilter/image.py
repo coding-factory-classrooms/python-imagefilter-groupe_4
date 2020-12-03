@@ -29,7 +29,7 @@ def open_image():
             dico[nbImg] = file
             nbImg = nbImg + 1
 
-    print("l'image est ouverte")
+    logger.log(f'image ouverte')
 
     return dico
 
@@ -57,7 +57,7 @@ def nb():
         gray[n] = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
         # cv2.imwrite('output/' + 'image' + str(n) + '.jpeg', gray[n])
-        print("l'image est noir est blanc")
+        logger.log(f'image est en noir et blanc')
     isImage = True
     return gray
 
@@ -117,7 +117,7 @@ def dilate(height):
 
         kernel = np.ones((5, 5), np.uint8)
         dilation[n] = cv2.dilate(image, kernel, height)
-        print("l'image est dilate")
+        logger.log(f'image est dilate')
     isImage = True
     return dilation
 
@@ -137,7 +137,7 @@ def FilterZeTeam():
 
         else:
             image = dico[n]
-        print("ajout de la team")
+        logger.log(f"ajout de la team")
         zeTeam[n] = cv2.putText(image,'-produit par: Alexandre, Angel, Alban',
     bottomLeftCornerOfText,
     font,
@@ -180,3 +180,4 @@ dico = open_image()
 dico = FilterZeTeam()
 save()
 
+logger.dump_log()
