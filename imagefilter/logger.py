@@ -4,6 +4,10 @@ log_file = 'imagefilter.log'
 
 
 def log(msg):
+    """
+    Add a logger for all actions the program do
+    :param msg: Add a message for specify the actions
+    """
     now = datetime.now()
     timestamp = now.strftime('%d/%m/%Y %H:%M:%S')
     formatted = f'{timestamp} = {msg}'
@@ -14,6 +18,7 @@ def log(msg):
 def dump_log():
     with open(log_file, 'r') as f:
 
+
         print(f.read())
 
 
@@ -21,3 +26,5 @@ def dump_log():
 
 
 
+
+        print(f.read())

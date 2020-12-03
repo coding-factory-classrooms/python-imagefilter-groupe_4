@@ -121,6 +121,9 @@ def dilate(height):
     return dilation
 
 def FilterZeTeam():
+    """
+    Add text on the image
+    """
     global isImage
     font = cv2.COLOR_BGR2GRAY
     bottomLeftCornerOfText = (10, 500)
@@ -165,7 +168,7 @@ def save():
         #print(dico[n])
         cv2.imwrite(folder + 'image' + str(n) + '.jpeg', dico[n])
 
-        print("l'image est sauvegarder")
+        logger.log("l'image est sauvegarder")
 
 
 def createFolder(directory):
