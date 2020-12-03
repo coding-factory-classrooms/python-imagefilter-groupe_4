@@ -12,6 +12,7 @@ isImage = False
 dico = {}
 folder = 'output/'
 
+
 def open_image():
     """
     open all the images of an folder
@@ -20,13 +21,19 @@ def open_image():
     dirs = os.listdir(path)
     nbImg = 0
     for file in dirs:
+
         if file.find(".png") >= 0 or file.find(".jpg")>= 0 or file.find(".jpeg"):
+
+        if file.find(".png") >= 0 or file.find(".jpg") >= 0:
+
             dico[nbImg] = file
             nbImg = nbImg + 1
 
     print("l'image est ouverte")
 
     return dico
+
+
 def nb():
     """
     add a grayscale to all the image
@@ -41,7 +48,7 @@ def nb():
 
         if isImage == False:
 
-            imgPath = path+"/"+dico[n]
+            imgPath = path + "/" + dico[n]
 
             image = cv2.imread(imgPath)
         else:
@@ -49,11 +56,11 @@ def nb():
 
         gray[n] = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-
-        #cv2.imwrite('output/' + 'image' + str(n) + '.jpeg', gray[n])
+        # cv2.imwrite('output/' + 'image' + str(n) + '.jpeg', gray[n])
         print("l'image est noir est blanc")
     isImage = True
     return gray
+
 def blur(height):
     """
     add a blur on all the images
@@ -62,6 +69,10 @@ def blur(height):
     """
     print(height)
     ksize = (height,height)
+
+
+
+def blur():
 
     try:
         blur = {}
@@ -85,6 +96,7 @@ def blur(height):
     except ValueError:
         print("l'image n'est pas bonne ou la valeur du flou est negative")
         sys.exit()
+
 def dilate(height):
     """
     dilate all the image
@@ -103,7 +115,6 @@ def dilate(height):
         else:
             image = dico[n]
 
-
         kernel = np.ones((5, 5), np.uint8)
         dilation[n] = cv2.dilate(image, kernel, height)
         print("l'image est dilate")
@@ -118,10 +129,11 @@ def save():
     createFolder(folder)
     for n in dico:
         print(dico[n])
-        cv2.imwrite(folder+'image'+str(n)+'.jpeg', dico[n])
+        cv2.imwrite(folder + 'image' + str(n) + '.jpeg', dico[n])
         print("l'image est sauvegarder")
-def createFolder(directory):
 
+
+def createFolder(directory):
     try:
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -129,6 +141,3 @@ def createFolder(directory):
 
     except OSError:
         print('Error: Creating directory. ' + directory)
-
-
-

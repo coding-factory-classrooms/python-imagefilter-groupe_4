@@ -14,12 +14,12 @@ def commande():
     :return: nothing
     """
     nbargs = 1
-    if args[1] == "-i" or args[1] =="-o":
+    if args[1] == "-i" or args[1] == "-o":
         if args[1] == "-i":
 
             i.path = args[2]
             nbargs = 3
-        elif args[1] =="-o":
+        elif args[1] == "-o":
             i.folder = args[2]
             nbargs = 3
         if args[2] != None and args[3] == "-o":
@@ -60,7 +60,6 @@ def commande():
             print("dilate,--convert all the image of the input directory to dilate")
 
     i.save()
-
 
 
 commande()
