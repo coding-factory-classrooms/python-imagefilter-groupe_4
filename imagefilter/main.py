@@ -52,6 +52,8 @@ def commande():
         if argument.find(":") >= 0:
             arg = argument.split(":")
             print(arg)
+        if argument == "FilterZeTeam":
+            i.dico == i.FilterZeTeam()
         if argument == "greyscale":
 
             i.dico = i.nb()
