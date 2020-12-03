@@ -9,6 +9,10 @@ image = ""
 
 
 def commande():
+    """
+    check all the commande on cli
+    :return: nothing
+    """
     nbargs = 1
     if args[1] == "-i" or args[1] =="-o":
         if args[1] == "-i":
@@ -63,6 +67,11 @@ commande()
 
 
 def createFolder(directory):
+    """
+    create the outpout directory
+    :param directory: path where save images
+    :return: nothing
+    """
     try:
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -70,5 +79,5 @@ def createFolder(directory):
         print('Error: Creating directory. ' + directory)
 
 
-# Example
-createFolder('./output/')
+
+

@@ -13,6 +13,10 @@ dico = {}
 folder = 'output/'
 
 def open_image():
+    """
+    open all the images of an folder
+    :return: a dictionary with all the reference of images in a folders in input
+    """
     dirs = os.listdir(path)
     nbImg = 0
     for file in dirs:
@@ -24,6 +28,10 @@ def open_image():
 
     return dico
 def nb():
+    """
+    add a grayscale to all the image
+    :return: all the image with a grayscale filter
+    """
     print("ici")
     gray = {}
 
@@ -47,6 +55,11 @@ def nb():
     isImage = True
     return gray
 def blur(height):
+    """
+    add a blur on all the images
+    :param height: value oh the blur
+    :return: a dico with all the image with a blur
+    """
     print(height)
     ksize = (height,height)
 
@@ -73,6 +86,11 @@ def blur(height):
         print("l'image n'est pas bonne ou la valeur du flou est negative")
         sys.exit()
 def dilate(height):
+    """
+    dilate all the image
+    :param height: value of the dilatation
+    :return: a dico with all the dilate's image
+    """
     global isImage
     dilation = {}
     for n in dico:
@@ -92,7 +110,10 @@ def dilate(height):
     isImage = True
     return dilation
 def save():
-
+    """
+    save all the image in a folders
+    :return: nothing
+    """
 
     createFolder(folder)
     for n in dico:
