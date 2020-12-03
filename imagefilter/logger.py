@@ -16,3 +16,4 @@ def dump_log():
         print(f.read())
 
 log("salut")
+dump_log()
