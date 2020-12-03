@@ -24,7 +24,7 @@ def open_image():
 
 
 
-        if file.find(".png") >= 0 or file.find(".jpg") >= 0:
+        if file.find(".png") >= 0 or file.find(".jpg") >= 0 or file.find(".jpeg") >= 0:
 
             dico[nbImg] = file
             nbImg = nbImg + 1
@@ -41,8 +41,9 @@ def nb():
     """
 
     gray = {}
-
+    print(len(dico))
     for n in dico:
+
         try:
             global isImage
 
@@ -58,24 +59,18 @@ def nb():
 
             # cv2.imwrite('output/' + 'image' + str(n) + '.jpeg', gray[n])
             logger.log(f'image est en noir et blanc')
-        except:
+        except cv2.error:
             print("error during the grayscales")
-        isImage = True
-        return gray
+
+    isImage = True
+    return gray
+
+
+
+
 
 def blur(height):
-    """
-    add a blur on all the images
-    :param height: value oh the blur
-    :return: a dico with all the image with a blur
-    """
-    print(height)
     ksize = (height,height)
-
-
-
-def blur():
-    ksize = (10,10)
     try:
         blur = {}
 
@@ -95,7 +90,7 @@ def blur():
             print("l'image est floue")
         isImage = True
         return blur
-    except:
+    except cv2.Error:
         print("l'image n'est pas bonne ou la valeur du flou est negative")
         sys.exit()
 
@@ -153,7 +148,7 @@ def FilterZeTeam():
             return zeTeam
         except:
             print("error during the filterZeTeam")
-        
+
 
 def save():
     """
@@ -167,7 +162,7 @@ def save():
 
 
 
-        print(dico[n])
+        #print(dico[n])
         cv2.imwrite(folder + 'image' + str(n) + '.jpeg', dico[n])
 
         print("l'image est sauvegarder")
@@ -183,8 +178,3 @@ def createFolder(directory):
         print('Error: Creating directory. ' + directory)
 
 
-dico = open_image()
-dico = FilterZeTeam()
-save()
-
-logger.dump_log()

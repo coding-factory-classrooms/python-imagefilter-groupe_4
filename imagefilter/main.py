@@ -85,4 +85,4 @@ def createFolder(directory):
         print('Error: Creating directory. ' + directory)
 
 
-logger.dump_log()
+
