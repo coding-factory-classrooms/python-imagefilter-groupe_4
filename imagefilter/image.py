@@ -29,7 +29,7 @@ def open_image():
             dico[nbImg] = file
             nbImg = nbImg + 1
 
-    print("l'image est ouverte")
+    logger.log(f'image ouverte')
 
     return dico
 
@@ -43,23 +43,25 @@ def nb():
     gray = {}
 
     for n in dico:
+        try:
+            global isImage
 
-        global isImage
+            if isImage == False:
 
-        if isImage == False:
+                imgPath = path + "/" + dico[n]
 
-            imgPath = path + "/" + dico[n]
+                image = cv2.imread(imgPath)
+            else:
+                image = dico[n]
 
-            image = cv2.imread(imgPath)
-        else:
-            image = dico[n]
+            gray[n] = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-        gray[n] = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-        # cv2.imwrite('output/' + 'image' + str(n) + '.jpeg', gray[n])
-        print("l'image est noir est blanc")
-    isImage = True
-    return gray
+            # cv2.imwrite('output/' + 'image' + str(n) + '.jpeg', gray[n])
+            logger.log(f'image est en noir et blanc')
+        except:
+            print("error during the grayscales")
+        isImage = True
+        return gray
 
 def blur(height):
     """
@@ -93,7 +95,7 @@ def blur():
             print("l'image est floue")
         isImage = True
         return blur
-    except ValueError:
+    except:
         print("l'image n'est pas bonne ou la valeur du flou est negative")
         sys.exit()
 
@@ -106,18 +108,20 @@ def dilate(height):
     global isImage
     dilation = {}
     for n in dico:
+        try:
+            if isImage == False:
 
-        if isImage == False:
+                imgPath = path + "/" + dico[n]
+                image = cv2.imread(imgPath)
 
-            imgPath = path + "/" + dico[n]
-            image = cv2.imread(imgPath)
+            else:
+                image = dico[n]
 
-        else:
-            image = dico[n]
-
-        kernel = np.ones((5, 5), np.uint8)
-        dilation[n] = cv2.dilate(image, kernel, height)
-        print("l'image est dilate")
+            kernel = np.ones((5, 5), np.uint8)
+            dilation[n] = cv2.dilate(image, kernel, height)
+            logger.log(f'image est dilate')
+        except:
+            print("error during the dilation")
     isImage = True
     return dilation
 
@@ -130,23 +134,26 @@ def FilterZeTeam():
     lineType = 2
     zeTeam = {}
     for n in dico:
-        if isImage == False:
+        try:
+            if isImage == False:
 
-            imgPath = path + "/" + dico[n]
-            image = cv2.imread(imgPath)
+                imgPath = path + "/" + dico[n]
+                image = cv2.imread(imgPath)
 
-        else:
-            image = dico[n]
-        print("ajout de la team")
-        zeTeam[n] = cv2.putText(image,'-produit par: Alexandre, Angel, Alban',
-    bottomLeftCornerOfText,
-    font,
-    fontScale,
-    fontColor,
-    lineType)
-    isImage = True
-
-    return zeTeam
+            else:
+                image = dico[n]
+            logger.log(f"ajout de la team")
+            zeTeam[n] = cv2.putText(image,'-produit par: Alexandre, Angel, Alban',
+            bottomLeftCornerOfText,
+            font,
+            fontScale,
+            fontColor,
+            lineType)
+            isImage = True
+            return zeTeam
+        except:
+            print("error during the filterZeTeam")
+        
 
 def save():
     """
@@ -180,3 +187,4 @@ dico = open_image()
 dico = FilterZeTeam()
 save()
 
+logger.dump_log()

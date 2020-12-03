@@ -28,7 +28,6 @@ def commande():
         print("dilate,--convert all the image of the input directory to dilate")
         sys.exit()
 
-
     if args[1] == "-i" or args[1] == "-o":
 
         if args[1] == "-i":
@@ -42,7 +41,7 @@ def commande():
             i.folder = args[4]
             nbargs = 5
     if args[nbargs] == "--filters":
-        sep = args[nbargs+1].split("|")
+        sep = args[nbargs + 1].split("|")
         taille = len(sep)
 
     i.dico = i.open_image()
@@ -51,7 +50,6 @@ def commande():
         argument = sep[c]
 
         if argument.find(":") >= 0:
-
             arg = argument.split(":")
             print(arg)
         if argument == "FilterZeTeam":
@@ -67,8 +65,6 @@ def commande():
         elif arg[0] == "dilate":
 
             i.dico = i.dilate(int(arg[1]))
-
-
 
     i.save()
 
@@ -89,5 +85,4 @@ def createFolder(directory):
         print('Error: Creating directory. ' + directory)
 
 
-
-
+logger.dump_log()

@@ -13,11 +13,4 @@ def log(msg):
 
 def dump_log():
     with open(log_file, 'r') as f:
-
         print(f.read())
-
-log("salut")
-dump_log()
-
-
-
