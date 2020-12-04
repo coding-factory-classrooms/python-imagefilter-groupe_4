@@ -1,4 +1,4 @@
-input_dir=
+input_dir=img
 output_dir=
 log_file=
-filters=dilate:98|grayscale|blur:45|FilterZeTeam
+filters=grayscale

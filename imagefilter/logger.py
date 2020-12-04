@@ -16,6 +16,10 @@ def log(msg):
 
 
 def dump_log():
+    """
+    read the log of the log_file and pirnt them
+    :return: nothing
+    """
     with open(log_file, 'r') as f:
 
 

@@ -3,6 +3,7 @@ import numpy as np
 import sys
 import os
 import logger
+import conf2
 
 test = 1
 nom_image = ""
@@ -41,7 +42,7 @@ def nb():
     """
 
     gray = {}
-    print(len(dico))
+
     for n in dico:
 
         try:
@@ -70,6 +71,11 @@ def nb():
 
 
 def blur(height):
+    """
+    add a blur filter on all the ilage
+    :param height: value of the blur (uneven)
+    :return: a dctionnary with all the image with blur
+    """
     ksize = (height,height)
     try:
         blur = {}
@@ -158,20 +164,26 @@ def save():
     save all the image in a folders
     :return: nothing
     """
-
+    global folder
     createFolder(folder)
+
     for n in dico:
 
 
 
 
-        #print(dico[n])
+        print(folder)
         cv2.imwrite(folder + 'image' + str(n) + '.jpeg', dico[n])
 
         logger.log("l'image est sauvegarder")
 
 
 def createFolder(directory):
+    """
+    create an output folder
+    :param directory: the path to the ouput directory
+    :return: nothing
+    """
     try:
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -179,5 +191,4 @@ def createFolder(directory):
 
     except OSError:
         print('Error: Creating directory. ' + directory)
-
 

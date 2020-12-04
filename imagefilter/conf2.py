@@ -2,28 +2,34 @@ import image as i
 
 
 def readfile():
+    """
+    read the config file and execute the command
+    :return: nothing
+    """
     file = open("conf.txt",'r')
     for line in file:
+
         isActive = line.split("=")
+
+
+        isActive[1] = isActive[1]
 
         if line.find("input_dir=") >=0 and isActive[1] != "\n":
             if line.find("= ") >=0:
                 command = line.split("= ")
             else:
                 command = line.split("=")
-            i.path = command[1]
-            i.dico = i.open_image()
-            i.dico = i.nb()
-            i.save()
+
+            i.path = command[1].rstrip("\n")
+
         if line.find("output_dir=") >=0 and isActive[1] != "\n":
+            print(isActive[1]+"s")
             if line.find("= ") >=0:
                 command = line.split("= ")
             else:
                 command = line.split("=")
             i.folder = command[1]
-            i.dico = i.open_image()
-            i.dico = i.nb()
-            i.save()
+
         if line.find("filters=") >=0 and isActive[1] != "\n":
 
             i.dico = i.open_image()

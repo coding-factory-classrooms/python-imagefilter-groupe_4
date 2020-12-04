@@ -47,14 +47,16 @@ def commande():
     i.dico = i.open_image()
 
     for c in range(taille):
+        arg = {}
+        arg[0] = " "
         argument = sep[c]
-
+        print(argument)
         if argument.find(":") >= 0:
             arg = argument.split(":")
             print(arg)
         if argument == "FilterZeTeam":
             i.dico == i.FilterZeTeam()
-        if argument == "greyscale":
+        if argument == "grayscale":
 
             i.dico = i.nb()
 
