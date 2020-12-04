@@ -3,7 +3,7 @@ import numpy as np
 import sys
 import os
 import logger
-import conf2
+
 
 test = 1
 nom_image = ""

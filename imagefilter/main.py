@@ -3,7 +3,7 @@ import sys
 import image as i
 import os
 import logger
-
+import conf2
 args = sys.argv
 image = ""
 

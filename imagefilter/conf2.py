@@ -55,7 +55,7 @@ def readfile():
                 if c.find("FilterZeTeam") >= 0:
                     i.dico = i.FilterZeTeam()
 
-        
+
         i.save()
 
 
