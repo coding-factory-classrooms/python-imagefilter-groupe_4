@@ -30,7 +30,7 @@ def readfile():
                 command = line.split("=")
             i.folder = command[1]
 
-        if line.find("filters=") >=0 and isActive[1] != "\n":
+        if line.find("filters=") >=0 and isActive[1] != "":
 
             i.dico = i.open_image()
             if line.find("= ") >=0:
@@ -55,6 +55,7 @@ def readfile():
                 if c.find("FilterZeTeam") >= 0:
                     i.dico = i.FilterZeTeam()
 
+        
         i.save()
 
 

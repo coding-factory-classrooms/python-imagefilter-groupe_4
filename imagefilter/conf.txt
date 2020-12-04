@@ -1,4 +1,4 @@
-input_dir=img
+input_dir=
 output_dir=
 log_file=
-filters=grayscale
+filters=

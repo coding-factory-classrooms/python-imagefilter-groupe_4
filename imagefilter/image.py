@@ -172,7 +172,7 @@ def save():
 
 
 
-        print(folder)
+
         cv2.imwrite(folder + 'image' + str(n) + '.jpeg', dico[n])
 
         logger.log("l'image est sauvegarder")
